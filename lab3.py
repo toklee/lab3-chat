@@ -24,6 +24,7 @@ def init_input(fr_input, fr_list):
     label = tk.Label(text="name", bg='pink')
     name_entry = tk.Entry()
     name_entry.insert(0, USERNAME)
+    
 
     def click(txt_entry):
         text = txt_entry.get()
@@ -35,12 +36,11 @@ def init_input(fr_input, fr_list):
             send_msg(msg)
             add_label(text)
             txt_entry.delete(0, tk.END)
-        else:
-            mb.showwarning("Ошибка", "Введите текст для отправки!")
 
+    
     def choose_image():
         file_path = fd.askopenfilename(
-            initialdir = "/", title="Select File",
+            initialdir = "/", title = "Select File",
             filetypes = (("Image files", ".jpg .jpeg .png"), ("all files", "."))
         )
         if file_path:
@@ -50,7 +50,7 @@ def init_input(fr_input, fr_list):
                 photo = ImageTk.PhotoImage(resized_image)
                 add_image(photo, file_path)
             except Exception as e:
-                mb.showerror("Ошибка", f"Не удалось загрузить изображение: {e}")
+                mb.showerror("ошибка", f"не удалось загрузить изображение: {e}")
 
 
     def send_emoji(emoji):
@@ -98,7 +98,7 @@ def add_label(text):
 
 
 def add_image(photo, file_path):
-    img_label = tk.Label(fr_list_msg, image=photo)
+    img_label = tk.Label(fr_list_msg, image = photo)
     img_label.image = photo
     img_label.pack(anchor = 'ne', side = tk.TOP, padx = 2, pady = 2)
     msg_lbls.append(img_label)
