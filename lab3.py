@@ -119,7 +119,7 @@ def init_frames(root):
 if __name__ == "__main__":
     root = init_gui()
     fr_list_msg, fr_input_msg = init_frames(root)
-    th = threading.Thread(target = read_msg, args = (add_label))
+    th = threading.Thread(target = read_msg, args = (add_label,))
     th.start()
     init_input(fr_input_msg, fr_list_msg)
     root.mainloop()
